@@ -12,24 +12,24 @@ services:
     volumes:
       - esdata:/usr/share/elasticsearch/data
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.17.1
-    container_name: kibana
-    ports:
-      - "5601:5601"
-    environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
-
-  logstash:
-    image: docker.elastic.co/logstash/logstash:7.17.1
-    container_name: logstash
-    volumes:
-      - ./logstash/config:/usr/share/logstash/config
-      - ./logstash/pipeline:/usr/share/logstash/pipeline
-    environment:
-      - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
-    depends_on:
-      - elasticsearch
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:7.17.1
+#    container_name: kibana
+#    ports:
+#      - "5601:5601"
+#    environment:
+#      - ELASTICSEARCH_URL=http://elasticsearch:9200
+#
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:7.17.1
+#    container_name: logstash
+#    volumes:
+#      - ./logstash/config:/usr/share/logstash/config
+#      - ./logstash/pipeline:/usr/share/logstash/pipeline
+#    environment:
+#      - "LS_JAVA_OPTS=-Xmx256m -Xms256m"
+#    depends_on:
+#      - elasticsearch
 
 volumes:
   esdata:
